@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,9 @@ namespace EFCore_2_migration
 {
     internal class MyDbContext : DbContext
     {
+        private static ILoggerFactory loggerFactory = LoggerFactory.Create(b => b.AddConsole());
+
+
         public DbSet<Person> People { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -16,6 +20,8 @@ namespace EFCore_2_migration
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlServer(
                 "Server=localhost; Database=demo_migration; User Id=sa; Password=PaSSword12!; Trusted_Connection=False; MultipleActiveResultSets=true");
+
+            optionsBuilder.UseLoggerFactory(loggerFactory);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
