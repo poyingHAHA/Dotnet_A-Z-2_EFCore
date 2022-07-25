@@ -21,7 +21,12 @@ namespace EFCore_2_migration
             optionsBuilder.UseSqlServer(
                 "Server=localhost; Database=demo_migration; User Id=sa; Password=PaSSword12!; Trusted_Connection=False; MultipleActiveResultSets=true");
 
-            optionsBuilder.UseLoggerFactory(loggerFactory);
+            // optionsBuilder.UseLoggerFactory(loggerFactory);
+            optionsBuilder.LogTo(msg =>
+            {
+                if (!msg.Contains("CommandExecuting")) return;
+                Console.WriteLine(msg);
+            });
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
