@@ -60,12 +60,23 @@ namespace EFCore_1
                 //await ctx.SaveChangesAsync();
 
                 //批量修改
-                var books = ctx.Books.Where(b => b.Price > 10);
-                foreach (var book in books)
-                {
-                    book.Price = book.Price+1;
-                }
+                //var books = ctx.Books.Where(b => b.Price > 10);
+                //foreach (var book in books)
+                //{
+                //    book.Price = book.Price+1;
+                //}
+                //await ctx.SaveChangesAsync();
+
+                // 插入Guid值
+                Rabbit r1 = new Rabbit();
+                r1.Id = Guid.NewGuid(); // 2. 也可以自己賦值
+                r1.Name = "Edwin";
+                Console.WriteLine(r1.Id);
+                ctx.Rabbits.Add(r1); // 1. 只要Add到Context就會賦值
+                Console.WriteLine(r1.Id);
                 await ctx.SaveChangesAsync();
+                Console.WriteLine(r1.Id);
+
             }
 
         }
