@@ -4,36 +4,22 @@ using EFCore_1;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EFCore_1.Migrations
 {
     [DbContext(typeof(TestDbContext))]
-    partial class TestDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220725045557_v4")]
+    partial class v4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("EFCore_1.Bird", b =>
-                {
-                    b.Property<string>("Number")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<long>("Id")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Number");
-
-                    b.ToTable("BirdHAHAHA");
-                });
 
             modelBuilder.Entity("EFCore_1.Book", b =>
                 {
@@ -42,16 +28,8 @@ namespace EFCore_1.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Age1")
-                        .HasColumnType("int");
-
                     b.Property<string>("AuthorName")
-                        .HasColumnType("nvarchar(10)")
-                        .HasColumnName("AuthorName");
-
-                    b.Property<string>("Name2")
-                        .HasColumnType("varchar(10)")
-                        .HasColumnName("NameTwo");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
@@ -65,11 +43,6 @@ namespace EFCore_1.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Title")
-                        .IsUnique();
-
-                    b.HasIndex("Name2", "AuthorName");
 
                     b.ToTable("T_Books");
                 });
@@ -88,7 +61,7 @@ namespace EFCore_1.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("T_Cats");
+                    b.ToTable("Cats");
                 });
 
             modelBuilder.Entity("EFCore_1.Dog", b =>

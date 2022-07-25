@@ -12,6 +12,8 @@ namespace EFCore_1
         public DbSet<Book> Books { get; set; }
         public DbSet<Person> People { get; set; }
         public DbSet<Dog> Dogs { get; set; }
+        public DbSet<Cat> Cats { get; set; }
+        public DbSet<Bird> BirdHAHAHA { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

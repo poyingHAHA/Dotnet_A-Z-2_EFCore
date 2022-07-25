@@ -13,5 +13,8 @@ namespace EFCore_1
         public DateTime PubTime { get; set; }
         public double Price { get; set; }
         public string AuthorName { get; set; }
+        public int Age1 { get; set; }
+        public int Age2 { get; set; }
+        public string Name2 { get; set; }
     }
 }
