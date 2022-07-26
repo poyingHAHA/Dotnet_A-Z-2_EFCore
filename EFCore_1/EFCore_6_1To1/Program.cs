@@ -1,7 +1,7 @@
-﻿using EFCore_5_selfReferenceStruct;
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using EFCore_6_1To1;
 
 namespace EFCore_6_1To1
 {
