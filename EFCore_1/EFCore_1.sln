@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore_4_Relation", "EFCore
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore_5_selfReferenceStruct", "EFCore_5_selfReferenceStruct\EFCore_5_selfReferenceStruct.csproj", "{0FC83436-130C-4BB0-853D-893F0F1608DC}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore_6_1To1", "EFCore_6_1To1\EFCore_6_1To1.csproj", "{725DFCFD-4E1E-4683-9EC6-BFDE708AB885}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{0FC83436-130C-4BB0-853D-893F0F1608DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FC83436-130C-4BB0-853D-893F0F1608DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FC83436-130C-4BB0-853D-893F0F1608DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{725DFCFD-4E1E-4683-9EC6-BFDE708AB885}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{725DFCFD-4E1E-4683-9EC6-BFDE708AB885}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{725DFCFD-4E1E-4683-9EC6-BFDE708AB885}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{725DFCFD-4E1E-4683-9EC6-BFDE708AB885}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
