@@ -1,6 +1,7 @@
 ﻿using EFCore_4_Relation.OneWayDemoClass;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace EFCore_4_Relation
@@ -53,11 +54,15 @@ namespace EFCore_4_Relation
                 // 複雜查詢，article的comment的message含有指定字
                 //var items = ctx.Articles.Where(a => a.Comments.Any(c => c.Message.Contains("媽斯克")));
 
-                var items = ctx.Comments.Where(c => c.Message.Contains("媽斯克")).Select(c => c.TheArticle).Distinct();
+                Console.WriteLine("準備Where");
+                IQueryable<Article> items = ctx.Comments.Where(c => c.Message.Contains("媽斯克")).Select(c => c.TheArticle).Distinct();
+
+                Console.WriteLine("準備Foreach");
                 foreach(var item in items)
                 {
                     Console.WriteLine(item.Title);
                 }
+                Console.WriteLine("完成");
             }
         }
     }
