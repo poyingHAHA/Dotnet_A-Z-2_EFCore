@@ -1,25 +1,23 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EFCore_2_migration
+namespace EFCore_4_Relation
 {
     internal class MyDbContext : DbContext
     {
-        private static ILoggerFactory loggerFactory = LoggerFactory.Create(b => b.AddConsole());
+        public DbSet<Article> Articles { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
-
-        public DbSet<Person> People { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlServer(
-                "Server=localhost; Database=demo_migration; User Id=sa; Password=PaSSword12!; Trusted_Connection=False; MultipleActiveResultSets=true");
+                "Server=localhost; Database=demo3_Relation; User Id=sa; Password=PaSSword12!; Trusted_Connection=False; MultipleActiveResultSets=true");
 
 
 
