@@ -25,17 +25,29 @@ namespace EFCore_4_Relation
 
                 //Article a = ctx.Articles.Single(x => x.Id == 1);
                 // 要使用Include做關聯才能得到Comment數據
-                Article a = ctx.Articles.Include(a => a.Comments).Single(x => x.Id == 1);
-                Console.WriteLine(a.Id);
-                Console.WriteLine(a.Title);
-                foreach(Comment comment in a.Comments)
-                {
-                    Console.WriteLine(comment.Message);
-                }
+                //Article a = ctx.Articles.Include(a => a.Comments).Single(x => x.Id == 1);
+                //Console.WriteLine(a.Id);
+                //Console.WriteLine(a.Title);
+                //foreach(Comment comment in a.Comments)
+                //{
+                //    Console.WriteLine(comment.Message);
+                //}
 
-                Comment cmt = ctx.Comments.Include(c=> c.TheArticle).Single(x => x.Id == 1);
-                Console.WriteLine(cmt.Message);
-                Console.WriteLine(cmt.TheArticle.Message);
+                //Comment cmt = ctx.Comments.Include(c=> c.TheArticle).Single(x => x.Id == 1);
+                //Console.WriteLine(cmt.Message);
+                //Console.WriteLine(cmt.TheArticle.Message);
+
+                var a1 = ctx.Articles.Select(a => new { a.Id, a.Title }).First();
+                Console.WriteLine(a1.Id + ", " + a1.Title);
+
+                var cmt = ctx.Comments.Include(c => c.TheArticle)
+                                .Select(c => new {Id=c.Id, AId=c.TheArticle.Id})
+                                .Single(c => c.Id == 1);
+                Console.WriteLine(cmt.Id+", "+cmt.AId);
+
+                var cmt2 = ctx.Comments.Select( a => new { Id = a.Id, AId = a.TheArticleId }).First();
+                Console.WriteLine(cmt2.Id + ", " + cmt2.AId);
+
             }
         }
     }

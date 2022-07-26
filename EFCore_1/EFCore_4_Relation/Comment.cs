@@ -11,5 +11,6 @@ namespace EFCore_4_Relation
         public int Id { get; set; }
         public string Message { get; set; }
         public Article TheArticle { get; set; }
+        public int TheArticleId { get; set; }
     }
 }

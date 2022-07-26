@@ -15,7 +15,10 @@ namespace EFCore_4_Relation
             builder.ToTable("T_Comments");
             builder.Property(a => a.Message).IsUnicode().IsRequired();
             // 我有一個TheArticle屬性對應到很多Article的Comments屬性，然後TheArticle屬性是必須的
-            builder.HasOne<Article>(c => c.TheArticle).WithMany(a => a.Comments).IsRequired();
+            builder.HasOne<Article>(c => c.TheArticle)
+                .WithMany(a => a.Comments)
+                .HasForeignKey(c => c.TheArticleId)
+                .IsRequired();
 
         }
     }
