@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EFCore_4_Relation.OneWayDemoClass;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 
@@ -37,16 +38,26 @@ namespace EFCore_4_Relation
                 //Console.WriteLine(cmt.Message);
                 //Console.WriteLine(cmt.TheArticle.Message);
 
-                var a1 = ctx.Articles.Select(a => new { a.Id, a.Title }).First();
-                Console.WriteLine(a1.Id + ", " + a1.Title);
+                //var a1 = ctx.Articles.Select(a => new { a.Id, a.Title }).First();
+                //Console.WriteLine(a1.Id + ", " + a1.Title);
 
-                var cmt = ctx.Comments.Include(c => c.TheArticle)
-                                .Select(c => new {Id=c.Id, AId=c.TheArticle.Id})
-                                .Single(c => c.Id == 1);
-                Console.WriteLine(cmt.Id+", "+cmt.AId);
+                //var cmt = ctx.Comments.Include(c => c.TheArticle)
+                //                .Select(c => new {Id=c.Id, AId=c.TheArticle.Id})
+                //                .Single(c => c.Id == 1);
+                //Console.WriteLine(cmt.Id+", "+cmt.AId);
 
-                var cmt2 = ctx.Comments.Select( a => new { Id = a.Id, AId = a.TheArticleId }).First();
-                Console.WriteLine(cmt2.Id + ", " + cmt2.AId);
+                //var cmt2 = ctx.Comments.Select( a => new { Id = a.Id, AId = a.TheArticleId }).First();
+                //Console.WriteLine(cmt2.Id + ", " + cmt2.AId);
+
+                User u1 = new User { Name = "Edwin" };
+                User u2 = new User { Name = "John" };
+                Leave l1 = new Leave { Remarks="Go Home", Requester=u2};
+                ctx.Leaves.Add(l1);
+                ctx.SaveChanges();
+
+                var requ = ctx.Leaves.Select(a => a.Requester).First(a => a.Id == 1);
+                Console.WriteLine(requ.Name);
+
 
             }
         }
