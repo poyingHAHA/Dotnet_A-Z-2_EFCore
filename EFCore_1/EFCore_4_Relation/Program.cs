@@ -49,16 +49,15 @@ namespace EFCore_4_Relation
                 //var cmt2 = ctx.Comments.Select( a => new { Id = a.Id, AId = a.TheArticleId }).First();
                 //Console.WriteLine(cmt2.Id + ", " + cmt2.AId);
 
-                User u1 = new User { Name = "Edwin" };
-                User u2 = new User { Name = "John" };
-                Leave l1 = new Leave { Remarks="Go Home", Requester=u2};
-                ctx.Leaves.Add(l1);
-                ctx.SaveChanges();
 
-                var requ = ctx.Leaves.Select(a => a.Requester).First(a => a.Id == 1);
-                Console.WriteLine(requ.Name);
+                // 複雜查詢，article的comment的message含有指定字
+                //var items = ctx.Articles.Where(a => a.Comments.Any(c => c.Message.Contains("媽斯克")));
 
-
+                var items = ctx.Comments.Where(c => c.Message.Contains("媽斯克")).Select(c => c.TheArticle).Distinct();
+                foreach(var item in items)
+                {
+                    Console.WriteLine(item.Title);
+                }
             }
         }
     }
