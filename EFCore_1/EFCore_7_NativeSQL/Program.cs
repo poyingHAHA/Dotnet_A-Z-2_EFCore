@@ -13,13 +13,13 @@ namespace EFCore_4_Relation
     {
         static async Task Main(string[] args)
         {
-            int id = 2;
+            int id = 1;
             
             using(MyDbContext ctx = new MyDbContext())
             {
                 //FormattableString fstr = @$"insert into T_Articles(Title, Message)
                 //     select Title, Message from T_Articles where id>{id}";
-                //// 加@可以寫多行的字符串
+                // 加@可以寫多行的字符串
                 //Console.WriteLine(fstr.ArgumentCount);
                 //Console.WriteLine(String.Join(", ", fstr.GetArguments());
                 //await ctx.Database.ExecuteSqlInterpolatedAsync(fstr);
@@ -78,9 +78,19 @@ namespace EFCore_4_Relation
                 //Console.WriteLine(e4.State); // addes
                 //Console.WriteLine(e5.State); // detached
 
-                var items = ctx.Articles.AsNoTracking().Take(3).ToArray();
-                var a1 = items[0];
-                Console.WriteLine(ctx.Entry(a1).State); // detached
+                //var items = ctx.Articles.AsNoTracking().Take(3).ToArray();
+                //var a1 = items[0];
+                //Console.WriteLine(ctx.Entry(a1).State); // detached
+
+                // 不用select就直接修改數據庫，修改快照訊息
+                //Article a = new Article { Id = 3, Title = "HaHaHaHa" };
+                //ctx.Entry(a).Property("Title").IsModified = true;
+                //ctx.SaveChanges();
+
+                // 批量操作
+                //ctx.RemoveRange(ctx.Articles.Where(z => z.Id > 5));
+                //ctx.SaveChanges();
+
             }
         }
     }

@@ -12,5 +12,6 @@ namespace EFCore_4_Relation
         public string Title { get; set; }
         public string Message { get; set; }
         public List<Comment> Comments = new List<Comment>(); // 建議給一個空的List
+        public bool IsDeleted { get; set; }
     }
 }
