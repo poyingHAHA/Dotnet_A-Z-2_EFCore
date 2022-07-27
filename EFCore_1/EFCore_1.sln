@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore_7_NativeSQL", "EFCor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore_8_ConcurrencyControl", "EFCore_8_ConcurrencyControl\EFCore_8_ConcurrencyControl.csproj", "{ADDA7E1F-FFB4-44F9-A9D2-113A17C7349F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore_9_ConcurrencyControlFromEFCore", "EFCore_9_ConcurrencyControlFromEFCore\EFCore_9_ConcurrencyControlFromEFCore.csproj", "{683CA074-A1FA-4E6D-BA41-B153972AF34C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{ADDA7E1F-FFB4-44F9-A9D2-113A17C7349F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADDA7E1F-FFB4-44F9-A9D2-113A17C7349F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADDA7E1F-FFB4-44F9-A9D2-113A17C7349F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{683CA074-A1FA-4E6D-BA41-B153972AF34C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{683CA074-A1FA-4E6D-BA41-B153972AF34C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{683CA074-A1FA-4E6D-BA41-B153972AF34C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{683CA074-A1FA-4E6D-BA41-B153972AF34C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
