@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ExpressionTreeToString;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading;
 
 namespace EFCore_10_ConcurrencyControlFromEFCore_RowVersion
@@ -9,41 +11,46 @@ namespace EFCore_10_ConcurrencyControlFromEFCore_RowVersion
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Your Name: ");
-            string name = Console.ReadLine();
+            Expression<Func<House, bool>> e1 = b => b.Price > 5;
+            Expression<Func<House, House, double>> e2 = (b1, b2) => b1.Price + b2.Price;
 
-            using (MyDbContext ctx = new MyDbContext())
-            {
-                var h = ctx.Houses.Single(h => h.Id == 3);
+            Console.WriteLine(e2.ToString("Object notation","C#"));
 
-                if (!string.IsNullOrEmpty(h.Owner))
-                {
-                    if (h.Owner == name)
-                    {
-                        Console.WriteLine("你已經搶到了");
-                    }
-                    else
-                    {
-                        Console.WriteLine("房子已經被" + h.Owner + "占了");
-                    }
-                    Console.ReadLine();
-                    return;
-                }
-                h.Owner = name;
+            //Console.WriteLine("Your Name: ");
+            //string name = Console.ReadLine();
 
-                Thread.Sleep(10000);
+            //using (MyDbContext ctx = new MyDbContext())
+            //{
+            //    var h = ctx.Houses.Single(h => h.Id == 3);
 
-                try
-                {
-                    ctx.SaveChanges();
-                    Console.WriteLine("恭喜搶到資源");
-                }
-                catch (DbUpdateConcurrencyException ex)
-                {
-                    Console.WriteLine("並行衝突");
-                }
-                Console.ReadLine();
-            }
+            //    if (!string.IsNullOrEmpty(h.Owner))
+            //    {
+            //        if (h.Owner == name)
+            //        {
+            //            Console.WriteLine("你已經搶到了");
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine("房子已經被" + h.Owner + "占了");
+            //        }
+            //        Console.ReadLine();
+            //        return;
+            //    }
+            //    h.Owner = name;
+
+            //    Thread.Sleep(10000);
+
+            //    try
+            //    {
+            //        ctx.SaveChanges();
+            //        Console.WriteLine("恭喜搶到資源");
+            //    }
+            //    catch (DbUpdateConcurrencyException ex)
+            //    {
+            //        Console.WriteLine("並行衝突");
+            //    }
+            //    Console.ReadLine();
+            //}
         }
     }
 }

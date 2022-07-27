@@ -11,6 +11,7 @@ namespace EFCore_10_ConcurrencyControlFromEFCore_RowVersion
         public long Id { get; set; }
         public string Name { get; set; }
         public string Owner { get; set; }
+        public int Price { get; set; }
         public byte[] RowVersion { get; set; }
     }
 }
