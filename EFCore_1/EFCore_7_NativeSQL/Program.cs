@@ -53,30 +53,34 @@ namespace EFCore_4_Relation
                 //    }
                 //}
 
-                var items = ctx.Articles.Take(3).ToArray();
+                //var items = ctx.Articles.Take(3).ToArray();
+                //var a1 = items[0];
+                //var a2 = items[1];
+                //var a3 = items[2];
+
+                //var a4 = new Article { Title = "aaa", Message = "xxxxx" };
+                //var a5 = new Article { Title = "bbb", Message = "yyyyyy" };
+
+                //a1.Title = "柏潁好可愛";
+                //ctx.Remove(a2);
+                //ctx.Articles.Add(a4);
+
+                //EntityEntry e1 = ctx.Entry(a1);
+                //EntityEntry e2 = ctx.Entry(a2);
+                //EntityEntry e3 = ctx.Entry(a3);
+                //EntityEntry e4 = ctx.Entry(a4);
+                //EntityEntry e5 = ctx.Entry(a5);
+
+                //Console.WriteLine(e1.State); // modified
+                //Console.WriteLine(e1.DebugView.LongView); // 輸出快照與修改後訊息
+                //Console.WriteLine(e2.State); // deleted
+                //Console.WriteLine(e3.State); // unchanged
+                //Console.WriteLine(e4.State); // addes
+                //Console.WriteLine(e5.State); // detached
+
+                var items = ctx.Articles.AsNoTracking().Take(3).ToArray();
                 var a1 = items[0];
-                var a2 = items[1];
-                var a3 = items[2];
-
-                var a4 = new Article { Title = "aaa", Message = "xxxxx" };
-                var a5 = new Article { Title = "bbb", Message = "yyyyyy" };
-
-                a1.Title = "柏潁好可愛";
-                ctx.Remove(a2);
-                ctx.Articles.Add(a4);
-
-                EntityEntry e1 = ctx.Entry(a1);
-                EntityEntry e2 = ctx.Entry(a2);
-                EntityEntry e3 = ctx.Entry(a3);
-                EntityEntry e4 = ctx.Entry(a4);
-                EntityEntry e5 = ctx.Entry(a5);
-
-                Console.WriteLine(e1.State); // modified
-                Console.WriteLine(e1.DebugView.LongView); // 輸出快照與修改後訊息
-                Console.WriteLine(e2.State); // deleted
-                Console.WriteLine(e3.State); // unchanged
-                Console.WriteLine(e4.State); // addes
-                Console.WriteLine(e5.State); // detached
+                Console.WriteLine(ctx.Entry(a1).State); // detached
             }
         }
     }
