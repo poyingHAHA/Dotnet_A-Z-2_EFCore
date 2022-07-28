@@ -11,11 +11,6 @@ namespace EFCore_10_ConcurrencyControlFromEFCore_RowVersion
     {
         static void Main(string[] args)
         {
-            Expression<Func<House, bool>> e1 = b => b.Price > 5;
-            Expression<Func<House, House, double>> e2 = (b1, b2) => b1.Price + b2.Price;
-
-            Console.WriteLine(e2.ToString("Object notation","C#"));
-
             //Console.WriteLine("Your Name: ");
             //string name = Console.ReadLine();
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EFCore_10_ConcurrencyControlFromEFCore_RowVersion
+namespace EFCore_11_ExpressinoTree
 {
     internal class House
     {
@@ -13,5 +13,10 @@ namespace EFCore_10_ConcurrencyControlFromEFCore_RowVersion
         public string Owner { get; set; }
         public double Price { get; set; }
         public byte[] RowVersion { get; set; }
+
+        public override string ToString()
+        {
+            return $"Id={Id}, Name={Name}, Owner={Owner}, Price={Price}, RowVersion={RowVersion}";
+        }
     }
 }
